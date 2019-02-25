@@ -37,6 +37,5 @@ body, html {
 }
 #app {
   width: 50%;
-  padding-bottom: 120px;
 }
 </style>

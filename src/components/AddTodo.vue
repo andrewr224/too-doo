@@ -21,7 +21,7 @@ export default {
     }
   },
   methods: {
-    addTodo(e) {
+    addTodo() {
       this.$validator.validateAll().then((result) => {
         if (!result) return
 

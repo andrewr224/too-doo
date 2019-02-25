@@ -1,4 +1,6 @@
-# too-doo
+# Too-Doo
+
+This is a simple Vue.js todo list.
 
 ## Project setup
 ```
@@ -24,6 +26,3 @@ yarn run test
 ```
 yarn run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
