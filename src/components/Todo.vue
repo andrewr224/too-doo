@@ -1,6 +1,6 @@
 <template>
 <div class="todo" v-bind:class="{'completed':todo.completed}">
-  <input type="checkbox" v-on:change="markComplete" v-bind:checked="todo.completed">
+  <input type="checkbox" v-on:change="markComplete(index)" v-bind:checked="todo.completed">
   {{ todo.title }}
   <i class="fa fa-minus-circle" v-on:click="remove(index)"></i>
 </div>
@@ -14,10 +14,8 @@ export default {
     remove(index) {
       this.$emit("remove-todo", index)
     },
-    markComplete(e) {
-      e.preventDefault()
-
-      console.log("Mark this item as complete")
+    markComplete(index) {
+      this.$emit("toggle-todo", index)
     }
   }
 }

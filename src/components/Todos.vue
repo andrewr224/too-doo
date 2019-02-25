@@ -5,7 +5,7 @@
   <ul>
     <transition-group name="list" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown">
       <li :key="index" v-for="(todo, index) in todos">
-        <Todo :todo="todo" :index="index" v-on:remove-todo="removeTodo" />
+        <Todo :todo="todo" :index="index" v-on:remove-todo="removeTodo" v-on:toggle-todo="toggleTodo" />
       </li>
     </transition-group>
   </ul>
@@ -46,6 +46,9 @@ export default {
     },
     removeTodo(index) {
       this.todos.splice(index, 1)
+    },
+    toggleTodo(index) {
+      this.todos[index].completed = !this.todos[index].completed
     }
   }
 }
