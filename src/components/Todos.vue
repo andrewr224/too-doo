@@ -1,5 +1,7 @@
 <template>
-<div class="todos holder">
+<div class="todos">
+  <AddTodo v-on:add-todo="addTodo" />
+
   <ul :key="todo.id" v-for="todo in todos">
     <Todo :todo="todo" />
   </ul>
@@ -7,24 +9,32 @@
 </template>
 
 <script>
+import AddTodo from "./AddTodo"
 import Todo from "./Todo"
 
 export default {
   name: "Todos",
   components: {
+    AddTodo,
     Todo
   },
   data() {
     return {
       todos: [
-        { "todo": "Create new Vue.js project" },
-        { "todo": "Add Todos Component" },
-        { "todo": "Add Singular Todo Component" },
-        { "todo": "Handle User Input" },
-        { "todo": "Validate User Input" },
-        { "todo": "Remove Todos" },
-        { "todo": "Add Style to the Project" }
+        { "title": "Create new Vue.js project", "completed": true },
+        { "title": "Add Todos Component", "completed": true },
+        { "title": "Add Singular Todo Component", "completed": true },
+        { "title": "Handle User Input", "completed": true },
+        { "title": "Validate User Input", "completed": false },
+        { "title": "Remove Todos", "completed": false },
+        { "title": "Mark Todos as completed", "completed": false },
+        { "title": "Add Style to the Project", "completed": false }
       ]
+    }
+  },
+  methods: {
+    addTodo(newTodo) {
+      this.todos.push(newTodo)
     }
   }
 }
@@ -32,11 +42,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-.holder {
-  background: #fff;
-}
-
 ul {
   margin: 0;
   padding: 0;
@@ -51,22 +56,5 @@ p {
 
 .container {
   box-shadow: 0px 0px 40px lightgray;
-}
-
-input {
-  width: calc(100% - 40px);
-  border: 0;
-  padding: 20px;
-  font-size: 1.3em;
-  background-color: #323333;
-  color: #687F7F;
-}
-
-.alert {
-  background: #fdf2ce;
-  font-weight: bold;
-  display: inline-block;
-  padding: 5px;
-  margin-top: -20px;
 }
 </style>

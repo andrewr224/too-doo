@@ -1,8 +1,8 @@
 <template>
-<div class="todo">
+<div class="todo" v-bind:class="{'completed':todo.completed}">
   <li>
-    <input type="checkbox" v-on:change="markComplete">
-    {{ todo.todo }}
+    <input type="checkbox" v-on:change="markComplete" v-bind:checked="todo.completed">
+    {{ todo.title }}
     <i class="fa fa-minus-circle" v-on:click="remove"></i>
   </li>
 </div>
@@ -38,9 +38,14 @@ export default {
 i {
   float: right;
   cursor: pointer;
+  color: #EC7063;
+}
+
+input {
+  padding: 15px;
 }
 
 .completed {
-  text-decoration: line-through;
+  color: #D5D8DC;
 }
 </style>
