@@ -3,7 +3,7 @@
   <li>
     <input type="checkbox" v-on:change="markComplete" v-bind:checked="todo.completed">
     {{ todo.title }}
-    <i class="fa fa-minus-circle" v-on:click="remove"></i>
+    <i class="fa fa-minus-circle" v-on:click="remove(index)"></i>
   </li>
 </div>
 </template>
@@ -11,10 +11,10 @@
 <script>
 export default {
   name: "Todo",
-  props: ["todo"],
+  props: ["todo", "index"],
   methods: {
-    remove(e) {
-      console.log("remove this item")
+    remove(index) {
+      this.$emit("remove-todo", index)
     },
     markComplete(e) {
       e.preventDefault()
