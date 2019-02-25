@@ -2,9 +2,17 @@
 <div class="todos">
   <AddTodo v-on:add-todo="addTodo" />
 
-  <ul :key="todo.id" v-for="(todo, index) in todos">
-    <Todo :todo="todo" :index="index" v-on:remove-todo="removeTodo" />
+  <ul>
+    <transition-group name="list" enter-active-class="animated bounceInUp" leave-active-class="animated bounceOutDown">
+      <li :key="index" v-for="(todo, index) in todos">
+        <Todo :todo="todo" :index="index" v-on:remove-todo="removeTodo" />
+      </li>
+    </transition-group>
   </ul>
+
+  <p>
+    There's always more you can do!
+  </p>
 </div>
 </template>
 
@@ -57,7 +65,9 @@ p {
   color: gray;
 }
 
-.container {
+.todos {
+  background: #fff;
   box-shadow: 0px 0px 40px lightgray;
 }
+
 </style>

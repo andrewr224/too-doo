@@ -1,10 +1,8 @@
 <template>
 <div class="todo" v-bind:class="{'completed':todo.completed}">
-  <li>
-    <input type="checkbox" v-on:change="markComplete" v-bind:checked="todo.completed">
-    {{ todo.title }}
-    <i class="fa fa-minus-circle" v-on:click="remove(index)"></i>
-  </li>
+  <input type="checkbox" v-on:change="markComplete" v-bind:checked="todo.completed">
+  {{ todo.title }}
+  <i class="fa fa-minus-circle" v-on:click="remove(index)"></i>
 </div>
 </template>
 
